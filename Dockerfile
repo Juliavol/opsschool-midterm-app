@@ -1,5 +1,5 @@
 FROM alpine:3.9
-LABEL maintainer="julia"
+LABEL maintainer="julia" name="foaas"
 WORKDIR /src
 EXPOSE 5000
 ENTRYPOINT [ "npm" ]
