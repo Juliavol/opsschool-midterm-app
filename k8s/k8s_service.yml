@@ -3,9 +3,10 @@ kind: Service
 metadata:
   name: foaas-svc
   annotations:
-    "consul.hashicorp.com/service-sync": "false"
+    "consul.hashicorp.com/service-sync": true
     "consul.hashicorp.com/service-name": foaas-consul-service
     "consul.hashicorp.com/service-tags": "foaas-svc,k8s-service"
+    "consul.hashicorp.com/service-port": http
   labels:
     app: foaas
 spec:
