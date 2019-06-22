@@ -1,11 +1,14 @@
-----
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: foaas-ingress
+  name: foaas
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  backend:
-    serviceName: foaas-svc
-    servicePort: http
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: foaas-svc
+          servicePort: http
