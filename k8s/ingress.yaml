@@ -6,10 +6,6 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  rules:
-  - http:
-      paths:
-      - path: /
-        backend:
-          serviceName: foaas-svc
-          servicePort: http
+  backend:
+    serviceName: foaas-svc
+    servicePort: http
