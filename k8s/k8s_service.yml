@@ -14,7 +14,8 @@ spec:
   ports:
   - name: http
     port: 30001
-    targetPort: http
+#    targetPort: http
+    targetPort: 80
     protocol: TCP
   selector:
     app: foaas
