@@ -11,4 +11,5 @@ spec:
       - path: /
         backend:
           serviceName: foaas-svc
-          servicePort: 30001
+#          servicePort: 30001
+          servicePort: 80
