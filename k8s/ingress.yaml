@@ -12,4 +12,6 @@ spec:
         backend:
           serviceName: foaas-svc
 #          servicePort: 30001
-          servicePort: 80
+          servicePort: 90
+  selector:
+    app: foaas
