@@ -2,6 +2,8 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: foaas
+  labels:
+    app: foaas
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
@@ -11,7 +13,6 @@ spec:
       - path: /foaas
         backend:
           serviceName: foaas-svc
-#          servicePort: 30001
-          servicePort: 90
+          servicePort: 30001
   selector:
     app: foaas
