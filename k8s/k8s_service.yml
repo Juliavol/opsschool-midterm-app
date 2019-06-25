@@ -3,19 +3,18 @@ kind: Service
 metadata:
   name: foaas-svc
   annotations:
-    "consul.hashicorp.com/service-sync": true
-    "consul.hashicorp.com/service-name": foaas-consul-service
-    "consul.hashicorp.com/service-tags": "foaas-svc,k8s-service"
-    "consul.hashicorp.com/service-port": http
+    consul.hashicorp.com/service-sync: "true"
+    consul.hashicorp.com/service-name: "foaas-consul-service"
+    consul.hashicorp.com/service-tags: "foaas-svc,k8s-service"
+    consul.hashicorp.com/service-port: "http"
   labels:
     app: foaas
 spec:
   type: NodePort
   ports:
   - name: http
-    port: 30001
-#    targetPort: http
-    targetPort: 80
+    port: 80
+    targetPort: 5000
     nodePort: 32000
     protocol: TCP
   selector:
