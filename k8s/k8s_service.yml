@@ -13,8 +13,9 @@ spec:
   type: ClusterIP
   ports:
   - name: http
-    port: 30001
-    targetPort: http
+    port: 80
+    targetPort: 5000
+    nodePort: 32000
     protocol: TCP
   selector:
     k8s-app: foaas
