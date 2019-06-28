@@ -24,15 +24,12 @@ spec:
         image: juliashub/foaas:1
         env:
         - name: DB_USERNAME
-          valueFrom:
-            secretKeyRef:
-              name: foaas-db-secrets
-              key: username
+          value: root
         - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: foaas-db-secrets
-              key: password
+              name: foaas-db-mysql
+              key: mysql-root-password
         ports:
         - name: http
           protocol: TCP

@@ -24,4 +24,5 @@ data:
 EOF
 
 kubectl apply -f ./echo.yaml
+helm upgrade --install foaas-db stable/mysql --set mysqlDatabase=foaas
 kubectl apply -f ../k8s/
