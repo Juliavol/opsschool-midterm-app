@@ -1,0 +1,8 @@
+---
+ingress:
+  enabled: true
+  paths: ["/dashboard(/|$)(.*)"]
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /$2

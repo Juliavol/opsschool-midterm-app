@@ -1,0 +1,17 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: consul-ingress
+spec:
+  rules:
+  - http:
+      paths:
+        - path: /ui
+          backend:
+            serviceName: consul-consul-ui
+            servicePort: http
+        - path: /v1
+          backend:
+            serviceName: consul-consul-ui
+            servicePort: http

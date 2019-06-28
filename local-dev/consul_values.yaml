@@ -1,0 +1,26 @@
+global:
+  enabled: true
+  domain: consul
+  datacenter: localdc
+
+server:
+  enabled: true
+  replicas: 1
+  bootstrapExpect: 1
+  storage: 10Gi
+
+client:
+  enabled: true
+
+dns:
+  enabled: true
+
+syncCatalog:
+  enabled: true
+  syncClusterIPServices: true
+
+ui:
+  enabled: true
+  service:
+    enabled: true
+    type: NodePort
