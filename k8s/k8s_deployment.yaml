@@ -23,6 +23,8 @@ spec:
       - name: foaas
         image: juliashub/foaas:1
         env:
+        - name: DB_HOSTNAME
+          value: foaas-db-mysql.service.consul
         - name: DB_USERNAME
           value: root
         - name: DB_PASSWORD
