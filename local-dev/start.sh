@@ -5,6 +5,8 @@ helm init
 
 helm upgrade --install nginx-ingress stable/nginx-ingress --set controller.hostNetwork=true
 helm upgrade --install dashboard stable/kubernetes-dashboard -f ./dashboard.yaml
+kubectl apply -f ./dashboard-adminuser.yaml
+helm upgrade --install prometheus stable/prometheus --set server.ingress.enabled
 kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep default-token | awk '{print $1}')
 helm upgrade --install consul ./consul-helm -f ./consul_values.yaml
 
@@ -25,4 +27,5 @@ EOF
 
 kubectl apply -f ./echo.yaml
 helm upgrade --install foaas-db stable/mysql --set mysqlDatabase=foaas
+helm upgrade --install grafana stable/grafana -f ./grafana.yaml
 kubectl apply -f ../k8s/
