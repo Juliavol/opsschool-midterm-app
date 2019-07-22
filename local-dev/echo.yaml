@@ -7,10 +7,17 @@ metadata:
     app: apple
 spec:
   containers:
-    - name: apple-app
-      image: hashicorp/http-echo
-      args:
-        - "-text=apple"
+  - name: apple-app
+    image: hashicorp/http-echo
+    args:
+    - "-text=apple"
+    resources:
+          limits:
+            cpu: 100m
+            memory: 10Mi
+          requests:
+            cpu: 100m
+            memory: 10Mi
 ---
 kind: Service
 apiVersion: v1
