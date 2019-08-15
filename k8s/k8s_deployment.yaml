@@ -1,25 +1,47 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: foaas-deploy
+  name: foaas
   labels:
-    app: foaas
+    k8s-app: foaas
+  namespace: default
+  annotations:
+    consul.hashicorp.com/service-name: "foaas"
+    consul.hashicorp.com/service-tags: "foaas-svc,k8s-service"
+    consul.hashicorp.com/service-port: "http"
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: foaas
+      k8s-app: foaas
   template:
     metadata:
       labels:
-        app: foaas
+        k8s-app: foaas
     spec:
       containers:
-      - name: foaas-pod
-        image: juliashub/foaas:latest
-        labels:
-          name: foaas-pod
+      - name: foaas
+        image: juliashub/foaas:1
+        env:
+        - name: DB_HOSTNAME
+          value: foaas-db-mysql.service.consul
+        - name: DB_USERNAME
+          value: root
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: foaas-db-mysql
+              key: mysql-root-password
+        - name: DB_HOST
+          value:
         ports:
         - name: http
           protocol: TCP
           containerPort: 5000
+        resources:
+          limits:
+            cpu: 100m
+            memory: 100Mi
+          requests:
+            cpu: 100m
+            memory: 100Mi

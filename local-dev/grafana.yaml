@@ -1,0 +1,9 @@
+ingress:
+  enabled: true
+  path: /grafana(/|$)(.*)
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+  hosts:
+    - ad177ba269c5611e9926f020f925ce66-1970285050.us-east-1.elb.amazonaws.com
+env:
+  GF_SERVER_ROOT_URL: /grafana
